@@ -10,11 +10,11 @@
 #	 root and yann being a list of the users to monitor.
 #	 You need to also make sure that awk is installed
 #
-# 2008-12-08 v 1.3.1 Hanisch Elián:
+# 2008-12-08 v 1.3.1 Hanisch Elin:
 #				- support for dots in user names.
 #				- fix labels
 #
-# 2008-12-01 v 1.3 Hanisch Elián:
+# 2008-12-01 v 1.3 Hanisch Elin:
 #				- fixes, refactoring and code cleanup
 #				- Users that use cpu but aren't in the USERS env var
 #				are plotted as "others", set others.graph to 'no' if
@@ -34,6 +34,10 @@
 
 #%# family=auto
 #%# capabilities=autoconf
+
+LU=`ps auh | cut -d' ' -f 1  | sort -u`
+USERS=`echo $LU`
+
 
 if [ "$1" = "autoconf" ]; then
 	if [ -n "$USERS" ]; then
